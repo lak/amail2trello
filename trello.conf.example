@@ -1,0 +1,12 @@
+# Step 1. Get Your Application Key from here:
+# https://trello.com/1/appKey/generate
+public_key: asdasdf
+
+# Step 2. Get Your Token to Approve Your "App" from here:
+# https://trello.com/1/authorize?key=YOUR_APPLICATION_KEY_FROM_STEP_1&name=SOME_ARBITRARY_NAME&expiration=never&response_type=token&scope=read,write
+member_token: asdfasdf
+
+# Step 3. Set up misc. variables
+board: My Board
+list: Tasks
+user: tehawesome
