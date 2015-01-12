@@ -41,7 +41,7 @@ class TrelloConfig
   def load_config(config)
     unless File.exist?(CONFIG_FILE)
       warn "You have to create a trello config file at #{CONFIG_FILE}"
-      warn "See the example file at <fill this in>"
+      warn "See the example file at trello.conf.example"
       exit(1)
     end
 

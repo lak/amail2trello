@@ -39,6 +39,9 @@ on run
 				set theSubject to the subject of theMessage
 				set theMessageID to the message id of theMessage
 
+        display dialog "Task name" default answer theSubject
+        set theSubject to text returned of result
+
         -- Store the full text content in tmp, rather than passing it
         set sourceFile to my write_to_file(theSource)
 				
@@ -47,8 +50,12 @@ on run
 			end repeat
 			
 		end tell
-	on error errmsg
-		my log_err("Could not create card from message: " & errmsg)
-		
+	on error errText number errNum
+
+    if (errNum is equal to -128) then
+      log "User cancelled"
+    else
+      my log_err("Could not create card from message: " & errText)
+    end if
 	end try
 end run
