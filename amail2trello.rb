@@ -105,5 +105,6 @@ end
 puts card.short_url
 
 # This will take you to the card's page
-system("open #{card.short_url}")
+# Turns out, actually, this is pretty annoying. Disabling
+# system("open #{card.short_url}")
 
