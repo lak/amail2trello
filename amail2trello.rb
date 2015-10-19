@@ -95,7 +95,16 @@ list = board.lists.select { |l| l.name == config.list }.first
   
 message_id =  CGI.escape(id)
 
-card = Card.create(:name => subject, :desc => "message://%3c#{id}%3e\n\n#{message}", :list_id => list.id, :pos => "bottom")
+begin
+  card = Card.create(
+    :name => subject,
+    :desc => "message://%3c#{id}%3e\n\n#{message}",
+    :list_id => list.id,
+    :pos => "bottom"
+  )
+rescue => detail
+  raise "Could not create Trello card: #{detail}"
+end
 
 unless attachments.empty?
   attachments.sort.uniq.each do |url|
@@ -105,5 +114,6 @@ end
 puts card.short_url
 
 # This will take you to the card's page
-system("open #{card.short_url}")
+# Turns out, actually, this is pretty annoying. Disabling
+# system("open #{card.short_url}")
 
